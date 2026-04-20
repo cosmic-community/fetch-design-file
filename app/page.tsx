@@ -1,0 +1,26 @@
+import { getLandingPage, getFeatures, getTestimonials } from '@/lib/cosmic'
+import Header from '@/components/Header'
+import Hero from '@/components/Hero'
+import FeaturesSection from '@/components/FeaturesSection'
+import TestimonialsSection from '@/components/TestimonialsSection'
+import CTASection from '@/components/CTASection'
+import Footer from '@/components/Footer'
+
+export default async function HomePage() {
+  const [landingPage, features, testimonials] = await Promise.all([
+    getLandingPage(),
+    getFeatures(),
+    getTestimonials(),
+  ])
+
+  return (
+    <main className="min-h-screen">
+      <Header />
+      <Hero landingPage={landingPage} />
+      <FeaturesSection landingPage={landingPage} features={features} />
+      <TestimonialsSection landingPage={landingPage} testimonials={testimonials} />
+      <CTASection landingPage={landingPage} />
+      <Footer landingPage={landingPage} />
+    </main>
+  )
+}
