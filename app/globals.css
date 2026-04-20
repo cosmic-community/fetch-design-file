@@ -12,7 +12,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Changed: treasure map gold gradient */
+/* Changed: refined treasure map gold gradient for text */
 .gradient-text {
   background: linear-gradient(135deg, #d97706 0%, #b45309 50%, #92400e 100%);
   -webkit-background-clip: text;
@@ -20,25 +20,17 @@ body {
   background-clip: text;
 }
 
-/* Changed: warm amber/brown gradient for buttons and accents */
+/* Changed: primary gradient for buttons/accents */
 .gradient-bg {
   background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
 }
 
-/* Changed: parchment-like background texture */
-.parchment-bg {
-  background-color: #fef3c7;
-  background-image: 
-    radial-gradient(ellipse at 20% 50%, rgba(217, 119, 6, 0.05) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 50%, rgba(180, 83, 9, 0.05) 0%, transparent 50%);
-}
-
-/* Changed: subtle map grid pattern */
+/* Changed: subtle map grid pattern overlay */
 .map-grid {
   background-image: 
-    linear-gradient(rgba(180, 83, 9, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(180, 83, 9, 0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(rgba(180, 83, 9, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180, 83, 9, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
 /* Changed: compass animation */
@@ -48,24 +40,14 @@ body {
 }
 
 .animate-spin-slow {
-  animation: spin-slow 20s linear infinite;
+  animation: spin-slow 30s linear infinite;
 }
 
-/* Changed: treasure glow effect */
-.treasure-glow {
-  box-shadow: 0 0 30px rgba(217, 119, 6, 0.3), 0 0 60px rgba(217, 119, 6, 0.1);
-}
-
-/* Changed: dotted trail path */
-.dotted-trail {
-  border: 2px dashed rgba(180, 83, 9, 0.2);
-}
-
-/* Changed: slide up animation for hero */
+/* Changed: slide up animation */
 @keyframes slide-up {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -74,7 +56,22 @@ body {
 }
 
 .animate-slide-up {
-  animation: slide-up 0.6s ease-out forwards;
+  animation: slide-up 0.7s ease-out forwards;
+}
+
+.animate-slide-up-delay-1 {
+  animation: slide-up 0.7s ease-out 0.1s forwards;
+  opacity: 0;
+}
+
+.animate-slide-up-delay-2 {
+  animation: slide-up 0.7s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-slide-up-delay-3 {
+  animation: slide-up 0.7s ease-out 0.3s forwards;
+  opacity: 0;
 }
 
 @keyframes fade-in {
@@ -83,21 +80,25 @@ body {
 }
 
 .animate-fade-in {
-  animation: fade-in 0.5s ease-out forwards;
+  animation: fade-in 0.6s ease-out forwards;
 }
 
-/* Changed: wave decoration for section dividers */
-.wave-divider {
-  position: relative;
+/* Changed: floating animation for hero mockup */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
 }
 
-.wave-divider::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60'%3E%3Cpath d='M0 30 Q300 0 600 30 Q900 60 1200 30 L1200 60 L0 60Z' fill='%23fffbeb'/%3E%3C/svg%3E") no-repeat bottom center;
-  background-size: cover;
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Changed: subtle pulse glow for highlighted elements */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(217, 119, 6, 0.15); }
+  50% { box-shadow: 0 0 40px rgba(217, 119, 6, 0.3); }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
 }

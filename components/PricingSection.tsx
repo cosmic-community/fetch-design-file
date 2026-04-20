@@ -1,7 +1,5 @@
-// Changed: Added new pricing section for the treasure map service
 interface PricingTier {
   name: string
-  emoji: string
   price: string
   period: string
   description: string
@@ -13,7 +11,6 @@ interface PricingTier {
 const tiers: PricingTier[] = [
   {
     name: 'Explorer',
-    emoji: '🧭',
     price: 'Free',
     period: '',
     description: 'Perfect for your first adventure',
@@ -24,14 +21,13 @@ const tiers: PricingTier[] = [
       'Share via link',
       'Community support',
     ],
-    cta: 'Start Exploring',
+    cta: 'Start Free',
     highlighted: false,
   },
   {
     name: 'Captain',
-    emoji: '⚓',
     price: '$12',
-    period: '/month',
+    period: '/mo',
     description: 'For serious treasure hunters',
     features: [
       'Unlimited treasure maps',
@@ -42,14 +38,13 @@ const tiers: PricingTier[] = [
       'Team collaboration',
       'Priority support',
     ],
-    cta: 'Become Captain',
+    cta: 'Get Started',
     highlighted: true,
   },
   {
     name: 'Admiral',
-    emoji: '👑',
     price: '$39',
-    period: '/month',
+    period: '/mo',
     description: 'For organizations & events',
     features: [
       'Everything in Captain',
@@ -60,69 +55,82 @@ const tiers: PricingTier[] = [
       'Custom branding',
       'Dedicated support',
     ],
-    cta: 'Go Admiral',
+    cta: 'Contact Sales',
     highlighted: false,
   },
 ]
 
 export default function PricingSection() {
   return (
-    <section id="pricing" className="py-20 lg:py-28 bg-white relative">
+    <section id="pricing" className="py-24 lg:py-32 bg-white relative">
       <div className="absolute inset-0 map-grid opacity-30" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-100 border border-amber-200 rounded-full text-sm text-amber-800 font-medium mb-4">
-            <span>💰</span> Pricing
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 border border-amber-100 rounded-full text-xs text-amber-700 font-semibold uppercase tracking-wider mb-4">
+            Pricing
           </div>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-amber-950 mb-4">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-amber-950 mb-4 leading-tight">
             Choose Your Adventure
           </h2>
-          <p className="text-xl text-amber-800/60">
-            Every great expedition starts with the right plan. Pick yours and start mapping.
+          <p className="text-lg text-amber-800/50 leading-relaxed">
+            Every great expedition starts with the right plan.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start max-w-5xl mx-auto">
           {tiers.map((tier) => (
             <div
               key={tier.name}
-              className={`rounded-2xl p-8 border transition-all duration-300 hover:shadow-xl ${
+              className={`rounded-2xl p-8 transition-all duration-300 ${
                 tier.highlighted
-                  ? 'bg-gradient-to-b from-amber-50 to-white border-amber-300 shadow-lg shadow-amber-100/50 ring-1 ring-amber-300 relative'
-                  : 'bg-white border-amber-100 hover:shadow-amber-100/50'
+                  ? 'bg-amber-950 text-white relative shadow-treasure-lg ring-1 ring-amber-800'
+                  : 'bg-white border border-amber-100/80 hover:shadow-card-hover'
               }`}
             >
               {tier.highlighted && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 gradient-bg text-white text-xs font-bold rounded-full shadow-md">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-amber-400 text-amber-950 text-xs font-bold rounded-full">
                   Most Popular
                 </div>
               )}
 
-              <div className="text-3xl mb-3">{tier.emoji}</div>
-              <h3 className="font-display text-xl font-bold text-amber-950 mb-1">{tier.name}</h3>
-              <p className="text-sm text-amber-700/60 mb-4">{tier.description}</p>
+              <div className="mb-6">
+                <h3 className={`font-display text-lg font-bold mb-1 ${tier.highlighted ? 'text-white' : 'text-amber-950'}`}>
+                  {tier.name}
+                </h3>
+                <p className={`text-sm ${tier.highlighted ? 'text-amber-200/70' : 'text-amber-700/50'}`}>
+                  {tier.description}
+                </p>
+              </div>
 
               <div className="flex items-baseline gap-1 mb-6">
-                <span className="font-display text-4xl font-extrabold text-amber-950">{tier.price}</span>
-                {tier.period && <span className="text-amber-700/60 text-sm">{tier.period}</span>}
+                <span className={`font-display text-4xl font-bold ${tier.highlighted ? 'text-white' : 'text-amber-950'}`}>
+                  {tier.price}
+                </span>
+                {tier.period && (
+                  <span className={`text-sm ${tier.highlighted ? 'text-amber-200/60' : 'text-amber-700/40'}`}>
+                    {tier.period}
+                  </span>
+                )}
               </div>
 
               <a
                 href="#cta"
-                className={`block text-center py-3 px-6 rounded-xl font-semibold transition-all hover:scale-[1.02] ${
+                className={`block text-center py-3 px-6 rounded-xl font-semibold text-sm transition-all hover:scale-[1.02] mb-6 ${
                   tier.highlighted
-                    ? 'gradient-bg text-white shadow-md shadow-amber-600/20'
-                    : 'bg-amber-50 text-amber-900 border border-amber-200 hover:bg-amber-100'
+                    ? 'bg-white text-amber-950 hover:bg-amber-50'
+                    : 'gradient-bg text-white shadow-sm shadow-amber-600/15'
                 }`}
               >
                 {tier.cta}
               </a>
 
-              <ul className="mt-6 space-y-3">
+              <ul className="space-y-3">
                 {tier.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2.5 text-sm text-amber-800/70">
-                    <span className="text-amber-500 mt-0.5 shrink-0">✓</span>
+                  <li key={feature} className={`flex items-start gap-2.5 text-sm ${tier.highlighted ? 'text-amber-100/80' : 'text-amber-800/60'}`}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={`shrink-0 mt-0.5 ${tier.highlighted ? 'text-amber-400' : 'text-amber-500'}`}>
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
                     {feature}
                   </li>
                 ))}

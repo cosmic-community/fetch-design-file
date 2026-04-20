@@ -15,7 +15,6 @@ export default async function HomePage() {
   ])
 
   return (
-    // Changed: added PricingSection between testimonials and CTA
     <main className="min-h-screen">
       <Header />
       <Hero landingPage={landingPage} />

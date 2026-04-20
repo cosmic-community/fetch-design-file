@@ -8,9 +8,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Changed: treasure map color palette
+        // Changed: complete parchment/treasure color palette
         parchment: {
-          50: '#fffdf5',
+          50: '#fffdf7',
           100: '#fffbeb',
           200: '#fef3c7',
           300: '#fde68a',
@@ -34,9 +34,17 @@ module.exports = {
         body: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       animation: {
-        'spin-slow': 'spin-slow 20s linear infinite',
-        'slide-up': 'slide-up 0.6s ease-out forwards',
-        'fade-in': 'fade-in 0.5s ease-out forwards',
+        'spin-slow': 'spin-slow 30s linear infinite',
+        'slide-up': 'slide-up 0.7s ease-out forwards',
+        'fade-in': 'fade-in 0.6s ease-out forwards',
+        'float': 'float 6s ease-in-out infinite',
+        'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
+      },
+      boxShadow: {
+        'treasure': '0 4px 24px rgba(217, 119, 6, 0.12)',
+        'treasure-lg': '0 8px 40px rgba(217, 119, 6, 0.18)',
+        'card': '0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06)',
+        'card-hover': '0 10px 40px rgba(0, 0, 0, 0.08)',
       },
     },
   },
